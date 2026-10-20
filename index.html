@@ -6,16 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f3f6fb">
     <meta name="description" content="面向 FDE 数据中台的长期方向，从企业需求入口开始验证。当前为赫匝本地原型，平台尚未上线。">
-    <link rel="canonical" href="https://www.1stone.cn/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="zh_CN">
-    <meta property="og:site_name" content="赫匝">
-    <meta property="og:title" content="赫匝 · 从流程问题开始">
-    <meta property="og:description" content="面向 FDE 数据中台的长期方向，从企业需求入口开始验证。当前为赫匝本地原型，平台尚未上线。">
-    <meta property="og:url" content="https://www.1stone.cn/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <title>赫匝 · 从流程问题开始</title>
-    <link rel="stylesheet" href="styles.css?v=3">
-    <script src="script.js?v=3" defer></script>
+    <link rel="stylesheet" href="styles.css?v=5">
+    <script src="script.js?v=5" defer></script>
   </head>
   <body>
     <!--
@@ -164,7 +159,7 @@
               <h2 id="step-title-3" tabindex="-1">要在摘要里留下联系方式吗？</h2>
               <div class="field">
                 <label for="name">称呼 <span class="optional-mark">选填</span></label>
-                <input id="name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="可留空" aria-describedby="name-error">
+                <input id="name" name="name" type="text" maxlength="80" autocomplete="off" placeholder="可留空" aria-describedby="name-error">
                 <p class="field-error" id="name-error" hidden></p>
               </div>
               <div class="field">
