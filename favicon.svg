@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="赫匝">
+  <rect width="40" height="40" fill="#15243b"/>
+  <g fill="none" stroke="#d7ef52" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+    <path d="M5 29h9l7-18h14M5 11h9l7 18h14"/>
+  </g>
+  <g fill="#d7ef52">
+    <circle cx="14" cy="11" r="2.5"/>
+    <circle cx="14" cy="29" r="2.5"/>
+    <circle cx="35" cy="11" r="2.5"/>
+    <circle cx="35" cy="29" r="2.5"/>
+  </g>
+</svg>
