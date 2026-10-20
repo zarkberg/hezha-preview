@@ -132,7 +132,7 @@ select:focus-visible {
 .brand-name {
   gap: 0.45rem;
   font-size: 1.03rem;
-  font-weight: 750;
+  font-weight: 800;
   letter-spacing: 0.015em;
 }
 
@@ -155,7 +155,7 @@ select:focus-visible {
 .brand-caption {
   color: var(--ink-soft);
   font-size: 0.68rem;
-  font-weight: 550;
+  font-weight: 600;
   letter-spacing: 0.1em;
 }
 
@@ -169,7 +169,7 @@ select:focus-visible {
 .header-action {
   text-decoration: none;
   font-size: 0.83rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .main-nav a {
@@ -224,9 +224,6 @@ select:focus-visible {
   height: 8px;
   border: 2px solid var(--ink);
   border-radius: 50%;
-}
-
-.signal-dot {
   background: var(--signal);
 }
 
@@ -241,7 +238,7 @@ p {
   max-width: 10ch;
   margin-bottom: 1.35rem;
   font-size: clamp(2.8rem, 5.5vw, 5.35rem);
-  font-weight: 760;
+  font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.14;
   text-wrap: balance;
@@ -282,7 +279,7 @@ p {
 
 .vision-note strong {
   color: var(--ink);
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .vision-separator {
@@ -343,7 +340,7 @@ p {
   background: var(--ink);
   color: var(--surface);
   font-size: 0.8rem;
-  font-weight: 720;
+  font-weight: 700;
   text-decoration: none;
   transition: background-color 180ms ease, border-color 180ms ease;
 }
@@ -497,7 +494,7 @@ p {
 
 .privacy-note strong {
   color: var(--ink);
-  font-weight: 750;
+  font-weight: 800;
 }
 
 .wizard-step[hidden],
@@ -510,7 +507,7 @@ p {
   margin-bottom: 0.3rem;
   color: var(--blue-deep);
   font-size: 0.67rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.015em;
 }
 
@@ -518,7 +515,7 @@ p {
 .summary-result h2 {
   margin-bottom: 1.3rem;
   font-size: clamp(1.35rem, 2vw, 1.7rem);
-  font-weight: 740;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.35;
 }
@@ -594,7 +591,7 @@ p {
   margin: 0.35rem 0 0;
   color: var(--error);
   font-size: 0.72rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .field-hint {
@@ -632,7 +629,7 @@ p {
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 0.76rem;
-  font-weight: 720;
+  font-weight: 700;
   line-height: 1.35;
   transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
 }
@@ -654,6 +651,8 @@ p {
 .button-primary:disabled {
   cursor: wait;
   opacity: 0.65;
+  border-color: var(--ink);
+  background: var(--ink);
 }
 
 .button-quiet {
@@ -685,7 +684,7 @@ p {
 .transcript-label {
   color: var(--ink-soft);
   font-size: 0.67rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .transcript-value {
@@ -773,7 +772,7 @@ p {
 .creation-heading h2 {
   margin-bottom: 0;
   font-size: clamp(1.8rem, 3.2vw, 3rem);
-  font-weight: 740;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.28;
   text-wrap: balance;
@@ -816,7 +815,7 @@ p {
 .process-stop h3 {
   margin: 0;
   font-size: 0.94rem;
-  font-weight: 720;
+  font-weight: 700;
   line-height: 1.5;
 }
 
@@ -841,7 +840,7 @@ p {
   margin-bottom: 0.8rem;
   color: var(--blue-deep);
   font-size: 0.71rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .process-intro h2 {
@@ -915,7 +914,7 @@ p {
   background: var(--paper);
   color: var(--ink);
   font-size: 0.66rem;
-  font-weight: 750;
+  font-weight: 800;
 }
 
 .process-stop.is-active::before {
@@ -957,7 +956,7 @@ p {
   border: 1px solid var(--line-strong);
   color: var(--ink-muted);
   font-size: 0.64rem;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.5;
 }
 
@@ -975,7 +974,7 @@ p {
   margin-top: 0.45rem;
   color: var(--ink);
   font-size: 0.7rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .boundaries-section {
@@ -1014,7 +1013,7 @@ p {
 .boundary-copy p:first-child {
   color: var(--ink);
   font-size: 0.95rem;
-  font-weight: 620;
+  font-weight: 600;
 }
 
 .boundary-copy ul {
@@ -1056,7 +1055,7 @@ p {
 .fde-note h2 {
   margin-bottom: 0.6rem;
   font-size: 1.03rem;
-  font-weight: 740;
+  font-weight: 700;
 }
 
 .fde-note p {
@@ -1115,7 +1114,7 @@ p {
 
 .footer-brand {
   font-size: 0.72rem;
-  font-weight: 750;
+  font-weight: 800;
   text-decoration: none;
 }
 
