@@ -80,7 +80,9 @@
     return names
       .map((name) => {
         const field = form.elements.namedItem(name);
-        return field.value.trim() ? `${labels[name]}：${field.value.trim()}` : "";
+        if (!field || typeof field.value !== "string") return "";
+        const value = field.value.trim();
+        return value ? `${labels[name]}：${value}` : "";
       })
       .filter(Boolean)
       .join(" · ");
@@ -138,6 +140,12 @@
     }
   }
 
+  window.addEventListener("pageshow", () => {
+    form.reset();
+    summaryText.value = "";
+    showStep(0, false);
+  });
+
   document.querySelectorAll('a[href="#intake-title"]').forEach((link) => {
     link.addEventListener("click", () => {
       if (currentStep !== 0 || form.hidden) {
@@ -148,17 +156,19 @@
 
   function createSummary() {
     const values = new FormData(form);
+    // FormData 取不到的键返回 null，统一兜底为空串再 trim
+    const read = (name) => String(values.get(name) ?? "").trim();
     const lines = [
       "赫匝 · 需求梳理摘要（本地生成，未发送）",
       "",
-      `需求主题：${values.get("topic").trim()}`,
-      `当前流程与痛点：${values.get("pain").trim()}`,
-      `期望结果：${values.get("outcome").trim()}`,
-      `现有系统或数据：${values.get("systems").trim() || "未填写"}`,
-      `预算范围：${values.get("budget") || "未填写"}`,
-      `期望时间：${values.get("timing") || "未填写"}`,
-      `称呼：${values.get("name").trim() || "未提供"}`,
-      `联系方式：${values.get("contact").trim() || "未提供"}`,
+      `需求主题：${read("topic")}`,
+      `当前流程与痛点：${read("pain")}`,
+      `期望结果：${read("outcome")}`,
+      `现有系统或数据：${read("systems") || "未填写"}`,
+      `预算范围：${read("budget") || "未填写"}`,
+      `期望时间：${read("timing") || "未填写"}`,
+      `称呼：${read("name") || "未提供"}`,
+      `联系方式：${read("contact") || "未提供"}`,
       "",
       "注意：本摘要只在当前浏览器页面中生成，没有上传或保存。请自行确认内容后再决定是否保留。",
     ];
@@ -197,17 +207,31 @@
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    const submitButton = event.submitter || form.querySelector('[type="submit"]');
+    // 防重复提交：接真实后端前，这里就是避免重复写入的关键位置
+    if (submitButton && submitButton.disabled) return;
     if (!validateStep(currentStep)) {
       return;
     }
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "正在生成…";
+    }
     // Replace this local-only path with a verified receiver after privacy and consent are configured.
-    summaryText.value = createSummary();
-    form.hidden = true;
-    transcript.hidden = true;
-    result.hidden = false;
-    copyStatus.textContent = "";
-    updateRoute();
-    result.querySelector("h2").focus();
+    try {
+      summaryText.value = createSummary();
+      form.hidden = true;
+      transcript.hidden = true;
+      result.hidden = false;
+      copyStatus.textContent = "";
+      updateRoute();
+      result.querySelector("h2").focus();
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "生成本地摘要";
+      }
+    }
   });
 
   document.querySelector("#edit-summary").addEventListener("click", () => {
