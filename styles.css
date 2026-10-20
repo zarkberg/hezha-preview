@@ -147,8 +147,6 @@ select:focus-visible {
 .step-position,
 .section-kicker,
 .step-count,
-.panel-footnote,
-.local-state,
 .example-index,
 .footer-brand {
   font-family: "Cascadia Code", "Consolas", "Microsoft YaHei", monospace;
@@ -221,8 +219,7 @@ select:focus-visible {
   letter-spacing: 0.015em;
 }
 
-.signal-dot,
-.local-state span {
+.signal-dot {
   width: 8px;
   height: 8px;
   border: 2px solid var(--ink);
@@ -398,20 +395,6 @@ p {
   font-size: 0.71rem;
   font-weight: 700;
   letter-spacing: 0.015em;
-}
-
-.local-state {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--ink-muted);
-  font-size: 0.68rem;
-  white-space: nowrap;
-}
-
-.local-state span {
-  border-color: var(--blue-deep);
-  background: var(--signal);
 }
 
 .route-track {
@@ -683,15 +666,6 @@ p {
   color: var(--ink);
 }
 
-.panel-footnote {
-  margin: 1.1rem 0 0;
-  padding-top: 0.75rem;
-  border-top: 1px solid #e0e6ef;
-  color: var(--ink-soft);
-  font-size: 0.63rem;
-  line-height: 1.5;
-}
-
 .transcript {
   display: grid;
   margin: 0 0 1rem;
@@ -874,62 +848,134 @@ p {
   margin-bottom: 1.15rem;
 }
 
-.process-intro > p:last-child {
+.process-intro > p:not(.section-kicker) {
   max-width: var(--measure);
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   color: var(--ink-muted);
   font-size: 0.86rem;
+}
+
+.process-stage {
+  display: flex;
+  margin-top: 1.5rem !important;
+  padding: 0.8rem 0;
+  align-items: flex-start;
+  gap: 0.65rem;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--ink) !important;
+  font-size: 0.78rem !important;
+}
+
+.stage-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-top: 0.3rem;
+  flex: 0 0 auto;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--signal);
 }
 
 .process-route {
   position: relative;
   display: grid;
+  margin: 0;
   padding: 0.25rem 0 0.25rem 0.3rem;
+  list-style: none;
 }
 
 .process-route::before {
   position: absolute;
   top: 14px;
-  bottom: 34px;
+  bottom: 48px;
   left: 12px;
-  width: 2px;
-  background: var(--line-strong);
+  border-left: 2px dashed var(--line-strong);
   content: "";
 }
 
 .process-stop {
   position: relative;
-  display: grid;
-  min-height: 105px;
-  padding: 0 0 1.55rem 2.1rem;
-  grid-template-columns: 1fr;
-  gap: 0.3rem;
+  display: block;
+  min-height: 0;
+  padding: 0 0 1.8rem 2.35rem;
 }
 
 .stop-node {
   position: absolute;
   z-index: 1;
-  top: 0.23rem;
+  top: 0.1rem;
   left: 4px;
-  width: 18px;
-  height: 18px;
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
   border: 2px solid var(--ink);
   border-radius: 50%;
   background: var(--paper);
+  color: var(--ink);
+  font-size: 0.66rem;
+  font-weight: 750;
 }
 
-.process-stop:first-child .stop-node {
+.process-stop.is-active::before {
+  position: absolute;
+  top: 1.7rem;
+  bottom: 1.8rem;
+  left: 0.3rem;
+  width: 1px;
+  background: var(--signal);
+  content: "";
+}
+
+.process-stop.is-active .stop-node {
   background: var(--signal);
 }
 
-.stop-node-end {
-  border-color: var(--blue);
-  background: var(--blue);
-  box-shadow: inset 0 0 0 4px var(--paper);
+.process-stop.is-pending .stop-node {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  background: var(--paper);
+  color: var(--ink-soft);
+}
+
+.process-stop .stop-node-end {
+  border-color: var(--line-strong);
+  color: var(--ink-muted);
+}
+
+.stop-head {
+  display: flex;
+  margin-bottom: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+}
+
+.stop-state {
+  padding: 0.15rem 0.42rem;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-muted);
+  font-size: 0.64rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.stop-state-live {
+  border-color: var(--ink);
+  background: var(--signal);
+  color: var(--ink);
 }
 
 .process-stop p {
   max-width: var(--measure);
+}
+
+.process-stop .stop-meta {
+  margin-top: 0.45rem;
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 650;
 }
 
 .boundaries-section {
@@ -1021,60 +1067,41 @@ p {
 }
 
 .creation-section {
-  display: grid;
-  padding-block: clamp(2rem, 4.5vw, 3.5rem);
-  align-items: center;
-  grid-template-columns: 1fr auto;
-  gap: 1.4rem 3rem;
+  padding-block: 1rem;
   border-top: 1px solid var(--line);
 }
 
-.creation-heading {
+.creation-section summary {
   display: flex;
+  min-height: 44px;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
-}
-
-.creation-mark {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  flex: 0 0 auto;
-  place-items: center;
-  border: 1px solid var(--ink);
-  color: var(--blue-deep);
-  font-family: "Cascadia Code", "Consolas", monospace;
-  font-size: 0.65rem;
-  font-weight: 750;
-  letter-spacing: 0.05em;
-}
-
-.creation-heading .section-kicker {
-  margin-bottom: 0.2rem;
-}
-
-.creation-heading h2 {
-  font-size: clamp(1.25rem, 2vw, 1.8rem);
-}
-
-.creation-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.8vw, 2.6rem);
-}
-
-.creation-links span {
   color: var(--ink);
-  font-size: 0.82rem;
-  font-weight: 680;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.creation-note {
-  grid-column: 1 / -1;
-  margin: 0;
-  padding-left: 60px;
+.creation-section summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.creation-section summary::marker {
+  color: var(--blue);
+}
+
+.creation-section p {
+  margin: 0.4rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.74rem;
+}
+
+.creation-summary-note {
   color: var(--ink-soft);
   font-size: 0.72rem;
+  font-weight: 500;
 }
 
 .site-footer {
@@ -1342,10 +1369,6 @@ p {
     margin-left: 0.1rem;
   }
 
-  .process-stop {
-    min-height: 104px;
-  }
-
   .boundary-copy p,
   .boundary-copy li {
     font-size: 0.8rem;
@@ -1366,34 +1389,11 @@ p {
     font-size: 0.76rem;
   }
 
-  .creation-section {
-    padding-block: 2rem;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .creation-heading {
-    gap: 0.8rem;
-  }
-
-  .creation-heading h2 {
-    font-size: 1.3rem;
-  }
-
-  .creation-mark {
-    width: 38px;
-    height: 38px;
-  }
-
-  .creation-links {
-    padding-left: 3.1rem;
-    justify-content: flex-start;
-    gap: 1.8rem;
-  }
-
-  .creation-note {
-    padding-left: 3.1rem;
-    font-size: 0.68rem;
+  .creation-section summary {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.1rem;
   }
 
   .site-footer {
@@ -1434,10 +1434,6 @@ p {
 
   .panel-label {
     font-size: 0.65rem;
-  }
-
-  .local-state {
-    font-size: 0.62rem;
   }
 
   .route-station {
