@@ -24,7 +24,7 @@
     if (field.required && !field.value.trim()) {
       return "请填写这一项，再继续。";
     }
-    if (field.minLength > 0 && field.value.trim().length < field.minLength) {
+    if (field.value.trim() && field.minLength > 0 && field.value.trim().length < field.minLength) {
       return field.name === "pain"
         ? "请再补充一些当前流程或卡点，让问题更容易理解。"
         : "请再补充一些内容，方便理解你的期望。";
@@ -138,6 +138,14 @@
     }
   }
 
+  document.querySelectorAll('a[href="#intake-title"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      if (currentStep !== 0 || form.hidden) {
+        showStep(0, false);
+      }
+    });
+  });
+
   function createSummary() {
     const values = new FormData(form);
     const lines = [
@@ -149,8 +157,8 @@
       `现有系统或数据：${values.get("systems").trim() || "未填写"}`,
       `预算范围：${values.get("budget") || "未填写"}`,
       `期望时间：${values.get("timing") || "未填写"}`,
-      `称呼：${values.get("name").trim()}`,
-      `联系方式：${values.get("contact").trim()}`,
+      `称呼：${values.get("name").trim() || "未提供"}`,
+      `联系方式：${values.get("contact").trim() || "未提供"}`,
       "",
       "注意：本摘要只在当前浏览器页面中生成，没有上传或保存。请自行确认内容后再决定是否保留。",
     ];
