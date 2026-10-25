@@ -13,10 +13,13 @@
     <meta property="og:description" content="面向 FDE 数据中台的长期方向，从企业需求入口开始验证。当前为赫匝本地原型，平台尚未上线。">
     <meta property="og:url" content="https://1stone.cn/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+    <!-- GitHub Pages 的 Enforce HTTPS 开关因证书状态卡在 new 而无法启用（服务端问题），
+         这里在客户端兜底把明文访问弹回 HTTPS。独立文件以满足 CSP script-src 'self'。 -->
+    <script src="force-https.js"></script>
     <title>赫匝 · 从流程问题开始</title>
-    <link rel="stylesheet" href="styles.css?v=7">
-    <script src="script.js?v=7" defer></script>
+    <link rel="stylesheet" href="styles.css?v=8">
+    <script src="script.js?v=8" defer></script>
   </head>
   <body>
     <!--
@@ -227,7 +230,7 @@
           <p>下面区分当前可体验的本地梳理，与尚未接入的后续人工流程。</p>
           <p class="process-stage"><span class="stage-dot" aria-hidden="true"></span><strong>当前</strong> 本地原型可完成需求梳理并生成摘要；后续人工处理流程尚未接入。</p>
         </div>
-        <ol class="process-route" aria-label="从需求到判断的四步路径">
+        <ol class="process-route" aria-label="从需求到判断的路径（含流程&SKILL演示节点）">
           <li class="process-stop is-active">
             <span class="stop-node" aria-hidden="true">1</span>
             <div>
@@ -258,6 +261,14 @@
               <div class="stop-head"><h3>再谈可能的下一步</h3><span class="stop-state">待设计</span></div>
               <p>只有在目标与条件清楚后，才讨论合作范围、双方责任、费用和时间；未另行约定前不开始工作。</p>
               <p class="stop-meta">当前原型不产生费用，也不构成合作承诺</p>
+            </div>
+          </li>
+          <li class="process-stop is-pending">
+            <span class="stop-node" aria-hidden="true">+</span>
+            <div>
+              <div class="stop-head"><h3>流程&amp;SKILL</h3><span class="stop-state">本机演示</span></div>
+              <p>一个已验证过的流程节点示例：把供应商报价文本整理成可核对的询价草稿。数据仅保存在你的浏览器，不会上传。</p>
+              <p class="stop-meta"><a class="text-link" href="./marushi/">打开丸石商情演示 <span aria-hidden="true">→</span></a></p>
             </div>
           </li>
         </ol>

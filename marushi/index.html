@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>丸石商情 · 跨境报价核验演示</title>
+    <meta name="description" content="丸石数据 · 跨境报价核验与采购询价草稿（本机演示，数据仅存本机）。">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b1220" />
+    <meta property="og:title" content="丸石商情">
+    <meta property="og:description" content="跨境报价核验 · 采购询价草稿（本机演示）">
+    <!-- CSP：img 需 blob:（拍照识别本地预览）；style 需 unsafe-inline（Expo reset 内联样式） -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+    <style id="boot-splash">
+      /* JS 包加载期间的占位屏，Expo 挂载后随 #root 内容替换 */
+      #boot {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.9rem;
+        background: #0b1220;
+        color: #8fa3bf;
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.05em;
+      }
+      #boot .dot {
+        width: 10px; height: 10px;
+        border: 2px solid #31415a;
+        border-top-color: #f5a623;
+        border-radius: 50%;
+        animation: boot-spin 0.9s linear infinite;
+      }
+      @keyframes boot-spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8fa3bf;background:#0b1220;">
+      此应用需要启用 JavaScript。请在浏览器设置中允许后刷新。
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root">
+      <div id="boot"><span class="dot"></span><span>丸石商情加载中…</span></div>
+    </div>
+  <script src="./_expo/static/js/web/AppEntry-6423086d49d4c961b73a3df2eddaadaa.js" defer></script>
+</body>
+</html>
