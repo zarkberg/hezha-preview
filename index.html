@@ -18,8 +18,8 @@
          这里在客户端兜底把明文访问弹回 HTTPS。独立文件以满足 CSP script-src 'self'。 -->
     <script src="force-https.js"></script>
     <title>赫匝 · 从流程问题开始</title>
-    <link rel="stylesheet" href="styles.css?v=8">
-    <script src="script.js?v=8" defer></script>
+    <link rel="stylesheet" href="styles.css?v=9">
+    <script src="script.js?v=9" defer></script>
   </head>
   <body>
     <!--
@@ -48,6 +48,7 @@
         <a href="#intake-title">需求入口</a>
         <a href="#process">如何进行</a>
         <a href="#boundaries">服务边界</a>
+        <a href="#marushi-hub">丸石矩阵</a>
         <a href="#creation">个人创作</a>
       </nav>
       <a class="header-action" href="#intake-title">说说你的流程 <span aria-hidden="true">↗</span></a>
@@ -301,6 +302,46 @@
         <summary><span>个人创作</span><span class="creation-summary-note">音频 · 绘画 · 文字</span></summary>
         <p>创作内容与作品入口整理中，准备好后再开放访问。</p>
       </details>
+
+      <section class="marushi-hub" id="marushi-hub" aria-labelledby="marushi-title">
+        <div class="section-heading">
+          <span class="route-marker" aria-hidden="true"></span>
+          <h2 id="marushi-title">丸石矩阵，<br>扫码进入对应的入口。</h2>
+        </div>
+        <div class="hub-intro">
+          <p>三个入口各管一件事：公众号读内容与方法，小程序动手梳理需求。均由丸石数据运营，扫码即可进入。</p>
+        </div>
+        <ul class="hub-grid">
+          <li class="hub-card">
+            <div class="hub-qr-frame">
+              <img src="qr/marushi-sq.jpg" alt="丸石商情公众号二维码" width="220" height="220" loading="lazy">
+            </div>
+            <div class="hub-info">
+              <div class="hub-name-row"><span class="hub-name">丸石商情</span><span class="hub-tag">公众号</span></div>
+              <p>行业场景、方法文章与动态更新；在会话里发送「模板」可查看文章入口。</p>
+            </div>
+          </li>
+          <li class="hub-card">
+            <div class="hub-qr-frame">
+              <img src="qr/marushi-data.jpg" alt="丸石数据公众号二维码" width="220" height="220" loading="lazy">
+            </div>
+            <div class="hub-info">
+              <div class="hub-name-row"><span class="hub-name">丸石数据</span><span class="hub-tag">公众号</span></div>
+              <p>丸石数据主入口：产品进展与服务说明；发送「顾问」可查看咨询入口。</p>
+            </div>
+          </li>
+          <li class="hub-card">
+            <div class="hub-qr-frame">
+              <img src="qr/marushi-fde.jpg" alt="丸石FDE小程序码" width="220" height="220" loading="lazy">
+            </div>
+            <div class="hub-info">
+              <div class="hub-name-row"><span class="hub-name">丸石FDE助手</span><span class="hub-tag hub-tag-app">小程序</span></div>
+              <p>已正式上线：九步需求梳理向导，本地生成可复制草案，不上传数据。</p>
+            </div>
+          </li>
+        </ul>
+        <p class="hub-note">扫码不构成服务承诺；合作范围、费用与责任仍按「服务边界」所述，在线下沟通确认。</p>
+      </section>
     </main>
 
     <footer class="site-footer">
